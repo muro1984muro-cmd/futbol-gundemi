@@ -3,20 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Futbol Gündem</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: #f8fafc;
     min-height: 100vh;
-
     background:
         radial-gradient(circle at 15% 20%, rgba(29,78,216,.35), transparent 25%),
         radial-gradient(circle at 85% 70%, rgba(220,38,38,.18), transparent 25%),
@@ -25,23 +21,28 @@ body {
 
 header {
     text-align: center;
-    padding: 40px 15px;
-    background: rgba(2,6,23,.7);
+    padding: 30px 15px 35px;
+    background: rgba(2,6,23,.78);
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 44px;
+.site-logo {
+    width: 230px;
+    max-width: 78%;
+    display: block;
+    margin: 0 auto 14px;
+    filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
 }
 
 header p {
+    margin: 0;
     color: #cbd5e1;
+    font-size: 16px;
 }
 
 nav {
-    background: rgba(2,6,23,.95);
-    padding: 15px;
+    background: rgba(2,6,23,.96);
+    padding: 13px 10px;
     text-align: center;
     position: sticky;
     top: 0;
@@ -60,8 +61,12 @@ nav button {
     border-radius: 8px;
 }
 
-nav button:hover {
-    background: #1d4ed8;
+nav button:hover { background: #1d4ed8; }
+
+nav small {
+    display: block;
+    color: #94a3b8;
+    margin-top: 4px;
 }
 
 .container {
@@ -70,25 +75,16 @@ nav button:hover {
     padding: 0 15px;
 }
 
-#login,
-#yoneticiPaneli,
-#haberDetay {
+#login, #yoneticiPaneli, #haberDetay {
     background: rgba(255,255,255,.97);
     color: #111827;
     border-radius: 18px;
     padding: 25px;
     box-shadow: 0 15px 50px rgba(0,0,0,.35);
-}
-
-#login,
-#yoneticiPaneli,
-#haberDetay {
     display: none;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
     width: 100%;
     padding: 13px;
     margin: 7px 0 15px;
@@ -97,9 +93,7 @@ select {
     font-size: 16px;
 }
 
-textarea {
-    min-height: 150px;
-}
+textarea { min-height: 150px; }
 
 button.action {
     background: #1d4ed8;
@@ -111,9 +105,7 @@ button.action {
     cursor: pointer;
 }
 
-button.publish {
-    background: #e11d48;
-}
+button.publish { background: #e11d48; }
 
 button.logout {
     background: #111827;
@@ -146,19 +138,9 @@ button.logout {
     transition: .25s;
 }
 
-.haber:hover {
-    transform: translateY(-7px);
-}
+.haber:hover { transform: translateY(-7px); }
 
-.haber img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.haber-icerik {
-    padding: 20px;
-}
+.haber-icerik { padding: 20px; }
 
 .kategori {
     color: #e11d48;
@@ -166,9 +148,7 @@ button.logout {
     font-weight: bold;
 }
 
-.haber h2 {
-    margin: 8px 0;
-}
+.haber h2 { margin: 8px 0; }
 
 .haber p {
     color: #475569;
@@ -197,9 +177,7 @@ button.logout {
     border-radius: 16px;
 }
 
-#detayBaslik {
-    font-size: 40px;
-}
+#detayBaslik { font-size: 40px; }
 
 .detay-metin {
     font-size: 19px;
@@ -218,13 +196,8 @@ button.logout {
 }
 
 @media(max-width:600px) {
-    header h1 {
-        font-size: 31px;
-    }
-
-    #detayBaslik {
-        font-size: 28px;
-    }
+    .site-logo { width: 190px; }
+    #detayBaslik { font-size: 28px; }
 }
 </style>
 </head>
@@ -232,67 +205,43 @@ button.logout {
 <body>
 
 <header>
-    <h1>⚽ FUTBOL GÜNDEM</h1>
+    <img
+        src="ChatGPT%20Image%2014%20A%C4%9Fu%202026%2014_29_52.png"
+        alt="Futbol Gündem"
+        class="site-logo"
+    >
     <p>Futbolun nabzı burada atıyor!</p>
 </header>
 
 <nav>
     <button onclick="anaSayfa()">🏠 Ana Sayfa</button>
     <button onclick="girisAc()">🔐 Yönetici Girişi</button>
-    <small>
-        Sadece yönetici haber yayınlayabilir.
-    </small>
+    <small>Sadece yönetici haber yayınlayabilir.</small>
 </nav>
 
 <div class="container">
 
 <div id="login">
-
     <h2>🔐 Yönetici Girişi</h2>
 
     <label>E-posta</label>
-
-    <input
-        id="email"
-        type="email"
-        placeholder="Yönetici e-postası"
-    >
+    <input id="email" type="email" placeholder="Yönetici e-postası">
 
     <label>Şifre</label>
+    <input id="sifre" type="password" placeholder="Yönetici şifresi">
 
-    <input
-        id="sifre"
-        type="password"
-        placeholder="Yönetici şifresi"
-    >
-
-    <button
-        class="action"
-        onclick="girisYap()"
-    >
-        Giriş Yap
-    </button>
-
+    <button class="action" onclick="girisYap()">Giriş Yap</button>
     <p id="hata"></p>
-
 </div>
 
-
 <div id="yoneticiPaneli">
-
     <h2>👑 Yönetici Paneli</h2>
 
     <label>Haber Başlığı</label>
-
-    <input
-        id="baslik"
-        placeholder="Haber başlığı"
-    >
+    <input id="baslik" placeholder="Haber başlığı">
 
     <label>Kategori</label>
-
     <select id="kategori">
-
         <option>Futbol</option>
         <option>Fenerbahçe</option>
         <option>Galatasaray</option>
@@ -300,82 +249,32 @@ button.logout {
         <option>Trabzonspor</option>
         <option>Son Dakika</option>
         <option>Avrupa Futbolu</option>
-
     </select>
 
     <label>Haber Metni</label>
+    <textarea id="metin" placeholder="Haberini yaz..."></textarea>
 
-    <textarea
-        id="metin"
-        placeholder="Haberini yaz..."
-    ></textarea>
-
-    <button
-        class="action publish"
-        onclick="yayinla()"
-    >
-        🚀 Haberi Yayınla
-    </button>
-
+    <button class="action publish" onclick="yayinla()">🚀 Haberi Yayınla</button>
     <br>
-
-    <button
-        class="logout"
-        onclick="cikisYap()"
-    >
-        🚪 Çıkış Yap
-    </button>
-
+    <button class="logout" onclick="cikisYap()">🚪 Çıkış Yap</button>
 </div>
-
 
 <div id="haberDetay">
-
-    <button
-        class="geri"
-        onclick="anaSayfa()"
-    >
-        ← Haberlere Dön
-    </button>
-
-    <img
-        id="detayFoto"
-        class="detay-foto"
-        style="display:none"
-    >
-
-    <div id="detayKategori"></div>
-
+    <button class="geri" onclick="anaSayfa()">← Haberlere Dön</button>
+    <div id="detayKategori" class="kategori"></div>
     <h1 id="detayBaslik"></h1>
-
-    <div id="detayTarih"></div>
-
-    <div
-        id="detayMetin"
-        class="detay-metin"
-    ></div>
-
+    <div id="detayTarih" class="tarih"></div>
+    <div id="detayMetin" class="detay-metin"></div>
 </div>
-
 
 <div id="anaIcerik">
-
     <h2>🔥 Son Haberler</h2>
-
-    <div
-        id="haberler"
-        class="haberler"
-    ></div>
-
+    <div id="haberler" class="haberler"></div>
 </div>
 
 </div>
-
-
-<!-- FIREBASE -->
 
 <script type="module">
-
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
@@ -400,434 +299,198 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-
 const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyCdCBpcpP6f4jKnvHGS5VrqnX6NAzouezQ",
-
-    authDomain:
-    "futbol-ed67d.firebaseapp.com",
-
-    projectId:
-    "futbol-ed67d",
-
-    storageBucket:
-    "futbol-ed67d.firebasestorage.app",
-
-    messagingSenderId:
-    "704815912539",
-
-    appId:
-    "1:704815912539:web:384eba192e014696d4d17e"
+    apiKey: "AIzaSyCdCBpcpP6f4jKnvHGS5VrqnX6NAzouezQ",
+    authDomain: "futbol-ed67d.firebaseapp.com",
+    projectId: "futbol-ed67d",
+    storageBucket: "futbol-ed67d.firebasestorage.app",
+    messagingSenderId: "704815912539",
+    appId: "1:704815912539:web:384eba192e014696d4d17e"
 };
 
-
-const app =
-    initializeApp(firebaseConfig);
-
-const auth =
-    getAuth(app);
-
-const db =
-    getFirestore(app);
-
-
-/* GLOBAL */
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 window.girisAc = function() {
-
-    document.getElementById("login").style.display =
-        "block";
-
-    document.getElementById("anaIcerik").style.display =
-        "none";
-
-    document.getElementById("haberDetay").style.display =
-        "none";
-
+    document.getElementById("login").style.display = "block";
+    document.getElementById("anaIcerik").style.display = "none";
+    document.getElementById("haberDetay").style.display = "none";
 };
-
 
 window.girisYap = async function() {
-
-    const email =
-        document.getElementById("email").value;
-
-    const sifre =
-        document.getElementById("sifre").value;
-
-    const hata =
-        document.getElementById("hata");
+    const email = document.getElementById("email").value.trim();
+    const sifre = document.getElementById("sifre").value;
+    const hata = document.getElementById("hata");
 
     try {
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            sifre
-        );
-
+        await signInWithEmailAndPassword(auth, email, sifre);
         hata.textContent = "";
-
-    } catch(error) {
-
-        hata.textContent =
-            "❌ E-posta veya şifre yanlış.";
-
+    } catch (error) {
+        console.error(error);
+        hata.textContent = "❌ E-posta veya şifre yanlış.";
     }
-
 };
-
 
 window.cikisYap = async function() {
-
     await signOut(auth);
-
+    anaSayfa();
 };
 
+onAuthStateChanged(auth, function(user) {
+    document.getElementById("yoneticiPaneli").style.display =
+        user ? "block" : "none";
 
-onAuthStateChanged(
-    auth,
-    function(user) {
-
-        if(user) {
-
-            document.getElementById(
-                "login"
-            ).style.display = "none";
-
-            document.getElementById(
-                "yoneticiPaneli"
-            ).style.display = "block";
-
-            document.getElementById(
-                "anaIcerik"
-            ).style.display = "block";
-
-        } else {
-
-            document.getElementById(
-                "yoneticiPaneli"
-            ).style.display = "none";
-
-        }
-
-        haberleriGetir();
-
-    }
-);
-
-
-/* HABER EKLE */
+    haberleriGetir();
+});
 
 window.yayinla = async function() {
-
     const user = auth.currentUser;
 
-    if(!user) {
-
+    if (!user) {
         alert("Önce yönetici girişi yapmalısın.");
-
         return;
     }
 
+    const baslik = document.getElementById("baslik").value.trim();
+    const kategori = document.getElementById("kategori").value;
+    const metin = document.getElementById("metin").value.trim();
 
-    const baslik =
-        document.getElementById("baslik").value.trim();
-
-    const kategori =
-        document.getElementById("kategori").value;
-
-    const metin =
-        document.getElementById("metin").value.trim();
-
-
-    if(!baslik || !metin) {
-
+    if (!baslik || !metin) {
         alert("Başlık ve haber metnini doldur!");
-
         return;
     }
-
 
     try {
+        await addDoc(collection(db, "haberler"), {
+            baslik,
+            kategori,
+            metin,
+            tarih: serverTimestamp(),
+            yazar: user.email
+        });
 
-        await addDoc(
-            collection(db,"haberler"),
-            {
-
-                baslik: baslik,
-
-                kategori: kategori,
-
-                metin: metin,
-
-                tarih: serverTimestamp(),
-
-                yazar: user.email
-
-            }
-        );
-
-
-        document.getElementById(
-            "baslik"
-        ).value = "";
-
-        document.getElementById(
-            "metin"
-        ).value = "";
-
+        document.getElementById("baslik").value = "";
+        document.getElementById("metin").value = "";
 
         alert("🎉 Haber yayınlandı!");
-
         haberleriGetir();
-
-    } catch(error) {
-
+    } catch (error) {
         console.error(error);
-
-        alert(
-            "❌ Haber yayınlanamadı: "
-            + error.message
-        );
-
+        alert("❌ Haber yayınlanamadı: " + error.message);
     }
-
 };
 
-
-/* HABERLERİ GETİR */
-
 async function haberleriGetir() {
-
-    const alan =
-        document.getElementById("haberler");
-
-    alan.innerHTML =
-        "<p>Haberler yükleniyor...</p>";
-
+    const alan = document.getElementById("haberler");
+    alan.innerHTML = "<p>Haberler yükleniyor...</p>";
 
     try {
+        const q = query(
+            collection(db, "haberler"),
+            orderBy("tarih", "desc")
+        );
 
-        const q =
-            query(
-                collection(db,"haberler"),
-                orderBy("tarih","desc")
-            );
-
-
-        const snapshot =
-            await getDocs(q);
-
-
+        const snapshot = await getDocs(q);
         alan.innerHTML = "";
 
-
-        if(snapshot.empty) {
-
-            alan.innerHTML =
-                "<p>Henüz haber yok.</p>";
-
+        if (snapshot.empty) {
+            alan.innerHTML = "<p>Henüz haber yok.</p>";
             return;
         }
 
-
         snapshot.forEach(function(docSnap) {
+            const haber = docSnap.data();
 
-            const haber =
-                docSnap.data();
-
-
-            const kart =
-                document.createElement("article");
-
+            const kart = document.createElement("article");
             kart.className = "haber";
 
+            const icerik = document.createElement("div");
+            icerik.className = "haber-icerik";
 
-            const icerik =
-                document.createElement("div");
+            const kategori = document.createElement("div");
+            kategori.className = "kategori";
+            kategori.textContent = haber.kategori || "Futbol";
 
-            icerik.className =
-                "haber-icerik";
+            const baslik = document.createElement("h2");
+            baslik.textContent = haber.baslik || "";
 
-
-            const kategori =
-                document.createElement("div");
-
-            kategori.className =
-                "kategori";
-
-            kategori.textContent =
-                haber.kategori;
-
-
-            const baslik =
-                document.createElement("h2");
-
-            baslik.textContent =
-                haber.baslik;
-
-
-            const metin =
-                document.createElement("p");
-
+            const metin = document.createElement("p");
+            const yazi = haber.metin || "";
             metin.textContent =
-                haber.metin.length > 140
-                ? haber.metin.substring(0,140)+"..."
-                : haber.metin;
+                yazi.length > 140 ? yazi.substring(0, 140) + "..." : yazi;
 
-
-            const tarih =
-                document.createElement("div");
-
-            tarih.className =
-                "tarih";
-
-            tarih.textContent =
-                "⚽ Futbol Gündem";
-
+            const tarih = document.createElement("div");
+            tarih.className = "tarih";
+            tarih.textContent = "⚽ Futbol Gündem";
 
             icerik.appendChild(kategori);
-
             icerik.appendChild(baslik);
-
             icerik.appendChild(metin);
-
             icerik.appendChild(tarih);
 
+            if (auth.currentUser) {
+                const sil = document.createElement("button");
+                sil.className = "sil";
+                sil.textContent = "🗑️ Haberi Sil";
 
-            if(auth.currentUser) {
+                sil.onclick = async function(event) {
+                    event.stopPropagation();
 
-                const sil =
-                    document.createElement("button");
+                    if (!confirm("Bu haberi silmek istiyor musun?")) return;
 
-                sil.className =
-                    "sil";
-
-                sil.textContent =
-                    "🗑️ Haberi Sil";
-
-
-                sil.onclick =
-                    async function(event) {
-
-                        event.stopPropagation();
-
-
-                        if(
-                            !confirm(
-                                "Bu haberi silmek istiyor musun?"
-                            )
-                        ) return;
-
-
-                        await deleteDoc(
-                            doc(
-                                db,
-                                "haberler",
-                                docSnap.id
-                            )
-                        );
-
-
+                    try {
+                        await deleteDoc(doc(db, "haberler", docSnap.id));
                         haberleriGetir();
-
-                    };
-
+                    } catch (error) {
+                        alert("❌ Haber silinemedi: " + error.message);
+                    }
+                };
 
                 icerik.appendChild(sil);
-
             }
-
 
             kart.appendChild(icerik);
 
-            kart.onclick =
-                function() {
-
-                    if(event.target.closest(".sil"))
-                        return;
-
-                    haberDetay(
-                        haber
-                    );
-
-                };
-
+            kart.onclick = function(event) {
+                if (event.target.closest(".sil")) return;
+                haberDetay(haber);
+            };
 
             alan.appendChild(kart);
-
         });
 
-
-    } catch(error) {
-
+    } catch (error) {
         console.error(error);
-
-        alan.innerHTML =
-            "<p>❌ Haberler yüklenemedi.</p>";
-
+        alan.innerHTML = "<p>❌ Haberler yüklenemedi.</p>";
     }
-
 }
-
-
-/* DETAY */
 
 function haberDetay(haber) {
+    document.getElementById("anaIcerik").style.display = "none";
+    document.getElementById("haberDetay").style.display = "block";
 
-    document.getElementById(
-        "anaIcerik"
-    ).style.display = "none";
+    document.getElementById("detayKategori").textContent =
+        haber.kategori || "Futbol";
 
-    document.getElementById(
-        "haberDetay"
-    ).style.display = "block";
+    document.getElementById("detayBaslik").textContent =
+        haber.baslik || "";
 
+    document.getElementById("detayMetin").textContent =
+        haber.metin || "";
 
-    document.getElementById(
-        "detayKategori"
-    ).textContent =
-        haber.kategori;
-
-
-    document.getElementById(
-        "detayBaslik"
-    ).textContent =
-        haber.baslik;
-
-
-    document.getElementById(
-        "detayMetin"
-    ).textContent =
-        haber.metin;
-
+    document.getElementById("detayTarih").textContent =
+        "⚽ Futbol Gündem";
 }
 
-
 window.anaSayfa = function() {
-
-    document.getElementById(
-        "haberDetay"
-    ).style.display = "none";
-
-    document.getElementById(
-        "login"
-    ).style.display = "none";
-
-    document.getElementById(
-        "anaIcerik"
-    ).style.display = "block";
-
+    document.getElementById("haberDetay").style.display = "none";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("anaIcerik").style.display = "block";
     haberleriGetir();
-
 };
 
-
 haberleriGetir();
-
 </script>
 
 </body>
