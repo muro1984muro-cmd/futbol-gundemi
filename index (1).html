@@ -7,7 +7,9 @@
 <link rel="icon" type="image/png" href="favicon.png">
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -62,7 +64,9 @@ nav button {
     border-radius: 8px;
 }
 
-nav button:hover { background: #1d4ed8; }
+nav button:hover {
+    background: #1d4ed8;
+}
 
 nav small {
     display: block;
@@ -76,7 +80,9 @@ nav small {
     padding: 0 15px;
 }
 
-#login, #yoneticiPaneli, #haberDetay {
+#login,
+#yoneticiPaneli,
+#haberDetay {
     background: rgba(255,255,255,.97);
     color: #111827;
     border-radius: 18px;
@@ -85,7 +91,9 @@ nav small {
     display: none;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     width: 100%;
     padding: 13px;
     margin: 7px 0 15px;
@@ -94,7 +102,9 @@ input, textarea, select {
     font-size: 16px;
 }
 
-textarea { min-height: 150px; }
+textarea {
+    min-height: 150px;
+}
 
 button.action {
     background: #1d4ed8;
@@ -106,7 +116,9 @@ button.action {
     cursor: pointer;
 }
 
-button.publish { background: #e11d48; }
+button.publish {
+    background: #e11d48;
+}
 
 button.logout {
     background: #111827;
@@ -139,9 +151,13 @@ button.logout {
     transition: .25s;
 }
 
-.haber:hover { transform: translateY(-7px); }
+.haber:hover {
+    transform: translateY(-7px);
+}
 
-.haber-icerik { padding: 20px; }
+.haber-icerik {
+    padding: 20px;
+}
 
 .kategori {
     color: #e11d48;
@@ -149,7 +165,9 @@ button.logout {
     font-weight: bold;
 }
 
-.haber h2 { margin: 8px 0; }
+.haber h2 {
+    margin: 8px 0;
+}
 
 .haber p {
     color: #475569;
@@ -178,7 +196,9 @@ button.logout {
     border-radius: 16px;
 }
 
-#detayBaslik { font-size: 40px; }
+#detayBaslik {
+    font-size: 40px;
+}
 
 .detay-metin {
     font-size: 19px;
@@ -197,8 +217,13 @@ button.logout {
 }
 
 @media(max-width:600px) {
-    .site-logo { width: 190px; }
-    #detayBaslik { font-size: 28px; }
+    .site-logo {
+        width: 190px;
+    }
+
+    #detayBaslik {
+        font-size: 28px;
+    }
 }
 </style>
 </head>
@@ -211,6 +236,7 @@ button.logout {
         alt="Futbol Gündem"
         class="site-logo"
     >
+
     <p>Futbolun nabzı burada atıyor!</p>
 </header>
 
@@ -222,70 +248,132 @@ button.logout {
 
 <div class="container">
 
-<div id="login">
-    <h2>🔐 Yönetici Girişi</h2>
+    <div id="login">
+        <h2>🔐 Yönetici Girişi</h2>
 
-    <label>E-posta</label>
-    <input id="email" type="email" placeholder="Yönetici e-postası">
+        <label>E-posta</label>
+        <input
+            id="email"
+            type="email"
+            placeholder="Yönetici e-postası"
+        >
 
-    <label>Şifre</label>
-    <input id="sifre" type="password" placeholder="Yönetici şifresi">
+        <label>Şifre</label>
+        <input
+            id="sifre"
+            type="password"
+            placeholder="Yönetici şifresi"
+        >
 
-    <button class="action" onclick="girisYap()">Giriş Yap</button>
-    <p id="hata"></p>
-</div>
+        <button class="action" onclick="girisYap()">
+            Giriş Yap
+        </button>
 
-<div id="yoneticiPaneli">
-    <h2>👑 Yönetici Paneli</h2>
+        <p id="hata"></p>
+    </div>
 
-    <label>Haber Başlığı</label>
-    <input id="baslik" placeholder="Haber başlığı">
+    <div id="yoneticiPaneli">
+        <h2>👑 Yönetici Paneli</h2>
 
-    <label>Kategori</label>
-    <select id="kategori">
-        <option>Futbol</option>
-        <option>Fenerbahçe</option>
-        <option>Galatasaray</option>
-        <option>Beşiktaş</option>
-        <option>Trabzonspor</option>
-        <option>Son Dakika</option>
-        <option>Avrupa Futbolu</option>
-    </select>
+        <label>Haber Başlığı</label>
+        <input
+            id="baslik"
+            placeholder="Haber başlığı"
+        >
 
-    <label>Haber Metni</label>
-    <textarea id="metin" placeholder="Haberini yaz..."></textarea>
+        <label>Kategori</label>
 
-    <button class="action publish" onclick="yayinla()">🚀 Haberi Yayınla</button>
-    <br>
-    <button class="logout" onclick="cikisYap()">🚪 Çıkış Yap</button>
-</div>
+        <select id="kategori">
+            <option>Futbol</option>
+            <option>Fenerbahçe</option>
+            <option>Galatasaray</option>
+            <option>Beşiktaş</option>
+            <option>Trabzonspor</option>
+            <option>Son Dakika</option>
+            <option>Avrupa Futbolu</option>
+        </select>
 
-<div id="haberDetay">
-    <button class="geri" onclick="anaSayfa()">← Haberlere Dön</button>
-    <div id="detayKategori" class="kategori"></div>
-    <h1 id="detayBaslik"></h1>
-    <div id="detayTarih" class="tarih"></div>
-    <div id="detayMetin" class="detay-metin"></div>
-</div>
+        <label>Haber Metni</label>
 
-<div id="anaIcerik">
-    <h2>🔥 Son Haberler</h2>
-    <div id="haberler" class="haberler"></div>
-</div>
+        <textarea
+            id="metin"
+            placeholder="Haberini yaz..."
+        ></textarea>
+
+        <button
+            class="action publish"
+            onclick="yayinla()"
+        >
+            🚀 Haberi Yayınla
+        </button>
+
+        <br>
+
+        <button
+            class="logout"
+            onclick="cikisYap()"
+        >
+            🚪 Çıkış Yap
+        </button>
+    </div>
+
+    <div id="haberDetay">
+
+        <button
+            class="geri"
+            onclick="anaSayfa()"
+        >
+            ← Haberlere Dön
+        </button>
+
+        <div
+            id="detayKategori"
+            class="kategori"
+        ></div>
+
+        <h1 id="detayBaslik"></h1>
+
+        <div
+            id="detayTarih"
+            class="tarih"
+        ></div>
+
+        <div
+            id="detayMetin"
+            class="detay-metin"
+        ></div>
+
+    </div>
+
+    <div id="anaIcerik">
+
+        <h2>🔥 Son Haberler</h2>
+
+        <div
+            id="haberler"
+            class="haberler"
+        ></div>
+
+    </div>
 
 </div>
 
 <script type="module">
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
     getAuth,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
     getFirestore,
@@ -297,201 +385,512 @@ import {
     orderBy,
     query,
     serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE AYARLARI
+===================================================== */
 
 const firebaseConfig = {
+
     apiKey: "AIzaSyCdCBpcpP6f4jKnvHGS5VrqnX6NAzouezQ",
+
     authDomain: "futbol-ed67d.firebaseapp.com",
+
     projectId: "futbol-ed67d",
+
     storageBucket: "futbol-ed67d.firebasestorage.app",
+
     messagingSenderId: "704815912539",
+
     appId: "1:704815912539:web:384eba192e014696d4d17e"
+
 };
+
+
+/* =====================================================
+   FIREBASE BAŞLAT
+===================================================== */
 
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
+
 const db = getFirestore(app);
 
+
+/* =====================================================
+   GİRİŞ SAYFASI
+===================================================== */
+
 window.girisAc = function() {
+
     document.getElementById("login").style.display = "block";
+
     document.getElementById("anaIcerik").style.display = "none";
+
     document.getElementById("haberDetay").style.display = "none";
+
 };
+
+
+/* =====================================================
+   GİRİŞ YAP
+===================================================== */
 
 window.girisYap = async function() {
-    const email = document.getElementById("email").value.trim();
-    const sifre = document.getElementById("sifre").value;
-    const hata = document.getElementById("hata");
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const sifre =
+        document.getElementById("sifre").value;
+
+    const hata =
+        document.getElementById("hata");
+
+    if (!email || !sifre) {
+
+        hata.textContent =
+            "❌ E-posta ve şifreyi gir.";
+
+        return;
+
+    }
 
     try {
-        await signInWithEmailAndPassword(auth, email, sifre);
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            sifre
+        );
+
         hata.textContent = "";
+
+        document.getElementById("login").style.display =
+            "none";
+
+        document.getElementById("anaIcerik").style.display =
+            "block";
+
     } catch (error) {
+
         console.error(error);
-        hata.textContent = "❌ E-posta veya şifre yanlış.";
+
+        hata.textContent =
+            "❌ E-posta veya şifre yanlış.";
+
     }
+
 };
+
+
+/* =====================================================
+   ÇIKIŞ
+===================================================== */
 
 window.cikisYap = async function() {
-    await signOut(auth);
-    anaSayfa();
+
+    try {
+
+        await signOut(auth);
+
+        anaSayfa();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
 };
 
+
+/* =====================================================
+   OTURUM KONTROLÜ
+===================================================== */
+
 onAuthStateChanged(auth, function(user) {
-    document.getElementById("yoneticiPaneli").style.display =
+
+    const panel =
+        document.getElementById("yoneticiPaneli");
+
+    panel.style.display =
         user ? "block" : "none";
 
     haberleriGetir();
+
 });
 
+
+/* =====================================================
+   HABER YAYINLA
+===================================================== */
+
 window.yayinla = async function() {
+
     const user = auth.currentUser;
 
     if (!user) {
-        alert("Önce yönetici girişi yapmalısın.");
+
+        alert(
+            "Önce yönetici girişi yapmalısın."
+        );
+
         return;
+
     }
 
-    const baslik = document.getElementById("baslik").value.trim();
-    const kategori = document.getElementById("kategori").value;
-    const metin = document.getElementById("metin").value.trim();
+
+    const baslik =
+        document.getElementById("baslik").value.trim();
+
+    const kategori =
+        document.getElementById("kategori").value;
+
+    const metin =
+        document.getElementById("metin").value.trim();
+
 
     if (!baslik || !metin) {
-        alert("Başlık ve haber metnini doldur!");
+
+        alert(
+            "Başlık ve haber metnini doldur!"
+        );
+
         return;
+
     }
 
+
     try {
-        await addDoc(collection(db, "haberler"), {
-            baslik,
-            kategori,
-            metin,
-            tarih: serverTimestamp(),
-            yazar: user.email
-        });
+
+        await addDoc(
+            collection(db, "haberler"),
+            {
+                baslik: baslik,
+                kategori: kategori,
+                metin: metin,
+                tarih: serverTimestamp(),
+                yazar: user.email
+            }
+        );
+
 
         document.getElementById("baslik").value = "";
+
         document.getElementById("metin").value = "";
 
+
         alert("🎉 Haber yayınlandı!");
+
         haberleriGetir();
+
+
     } catch (error) {
+
         console.error(error);
-        alert("❌ Haber yayınlanamadı: " + error.message);
+
+        alert(
+            "❌ Haber yayınlanamadı: " +
+            error.message
+        );
+
     }
+
 };
 
+
+/* =====================================================
+   HABERLERİ GETİR
+===================================================== */
+
 async function haberleriGetir() {
-    const alan = document.getElementById("haberler");
-    alan.innerHTML = "<p>Haberler yükleniyor...</p>";
+
+    const alan =
+        document.getElementById("haberler");
+
+
+    if (!alan) return;
+
+
+    alan.innerHTML =
+        "<p>Haberler yükleniyor...</p>";
+
 
     try {
+
         const q = query(
             collection(db, "haberler"),
             orderBy("tarih", "desc")
         );
 
-        const snapshot = await getDocs(q);
+
+        const snapshot =
+            await getDocs(q);
+
+
         alan.innerHTML = "";
 
+
         if (snapshot.empty) {
-            alan.innerHTML = "<p>Henüz haber yok.</p>";
+
+            alan.innerHTML =
+                "<p>Henüz haber yok.</p>";
+
             return;
+
         }
 
-        snapshot.forEach(function(docSnap) {
-            const haber = docSnap.data();
 
-            const kart = document.createElement("article");
+        snapshot.forEach(function(docSnap) {
+
+            const haber =
+                docSnap.data();
+
+
+            const kart =
+                document.createElement("article");
+
             kart.className = "haber";
 
-            const icerik = document.createElement("div");
-            icerik.className = "haber-icerik";
 
-            const kategori = document.createElement("div");
-            kategori.className = "kategori";
-            kategori.textContent = haber.kategori || "Futbol";
+            const icerik =
+                document.createElement("div");
 
-            const baslik = document.createElement("h2");
-            baslik.textContent = haber.baslik || "";
+            icerik.className =
+                "haber-icerik";
 
-            const metin = document.createElement("p");
-            const yazi = haber.metin || "";
+
+            const kategori =
+                document.createElement("div");
+
+            kategori.className =
+                "kategori";
+
+            kategori.textContent =
+                haber.kategori || "Futbol";
+
+
+            const baslik =
+                document.createElement("h2");
+
+            baslik.textContent =
+                haber.baslik || "";
+
+
+            const metin =
+                document.createElement("p");
+
+            const yazi =
+                haber.metin || "";
+
+
             metin.textContent =
-                yazi.length > 140 ? yazi.substring(0, 140) + "..." : yazi;
+                yazi.length > 140
+                    ? yazi.substring(0, 140) + "..."
+                    : yazi;
 
-            const tarih = document.createElement("div");
-            tarih.className = "tarih";
-            tarih.textContent = "⚽ Futbol Gündem";
+
+            const tarih =
+                document.createElement("div");
+
+            tarih.className =
+                "tarih";
+
+            tarih.textContent =
+                "⚽ Futbol Gündem";
+
 
             icerik.appendChild(kategori);
+
             icerik.appendChild(baslik);
+
             icerik.appendChild(metin);
+
             icerik.appendChild(tarih);
 
+
+            /* =================================================
+               SİL BUTONU
+            ================================================= */
+
             if (auth.currentUser) {
-                const sil = document.createElement("button");
-                sil.className = "sil";
-                sil.textContent = "🗑️ Haberi Sil";
 
-                sil.onclick = async function(event) {
-                    event.stopPropagation();
+                const sil =
+                    document.createElement("button");
 
-                    if (!confirm("Bu haberi silmek istiyor musun?")) return;
+                sil.className =
+                    "sil";
 
-                    try {
-                        await deleteDoc(doc(db, "haberler", docSnap.id));
-                        haberleriGetir();
-                    } catch (error) {
-                        alert("❌ Haber silinemedi: " + error.message);
-                    }
-                };
+                sil.textContent =
+                    "🗑️ Haberi Sil";
+
+
+                sil.onclick =
+                    async function(event) {
+
+                        event.stopPropagation();
+
+
+                        if (
+                            !confirm(
+                                "Bu haberi silmek istiyor musun?"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        try {
+
+                            await deleteDoc(
+                                doc(
+                                    db,
+                                    "haberler",
+                                    docSnap.id
+                                )
+                            );
+
+
+                            haberleriGetir();
+
+
+                        } catch (error) {
+
+                            alert(
+                                "❌ Haber silinemedi: " +
+                                error.message
+                            );
+
+                        }
+
+                    };
+
 
                 icerik.appendChild(sil);
+
             }
+
 
             kart.appendChild(icerik);
 
-            kart.onclick = function(event) {
-                if (event.target.closest(".sil")) return;
-                haberDetay(haber);
-            };
+
+            /* =================================================
+               HABER DETAYI
+            ================================================= */
+
+            kart.onclick =
+                function(event) {
+
+                    if (
+                        event.target.closest(".sil")
+                    ) {
+
+                        return;
+
+                    }
+
+                    haberDetay(haber);
+
+                };
+
 
             alan.appendChild(kart);
+
         });
 
+
     } catch (error) {
+
         console.error(error);
-        alan.innerHTML = "<p>❌ Haberler yüklenemedi.</p>";
+
+        alan.innerHTML =
+            "<p>❌ Haberler yüklenemedi.</p>";
+
     }
+
 }
+
+
+/* =====================================================
+   HABER DETAY
+===================================================== */
 
 function haberDetay(haber) {
-    document.getElementById("anaIcerik").style.display = "none";
-    document.getElementById("haberDetay").style.display = "block";
 
-    document.getElementById("detayKategori").textContent =
+    document.getElementById(
+        "anaIcerik"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "haberDetay"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "detayKategori"
+    ).textContent =
         haber.kategori || "Futbol";
 
-    document.getElementById("detayBaslik").textContent =
+
+    document.getElementById(
+        "detayBaslik"
+    ).textContent =
         haber.baslik || "";
 
-    document.getElementById("detayMetin").textContent =
+
+    document.getElementById(
+        "detayMetin"
+    ).textContent =
         haber.metin || "";
 
-    document.getElementById("detayTarih").textContent =
+
+    document.getElementById(
+        "detayTarih"
+    ).textContent =
         "⚽ Futbol Gündem";
+
 }
 
+
+/* =====================================================
+   ANA SAYFA
+===================================================== */
+
 window.anaSayfa = function() {
-    document.getElementById("haberDetay").style.display = "none";
-    document.getElementById("login").style.display = "none";
-    document.getElementById("anaIcerik").style.display = "block";
+
+    document.getElementById(
+        "haberDetay"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "login"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "anaIcerik"
+    ).style.display = "block";
+
+
     haberleriGetir();
+
 };
 
+
+/* =====================================================
+   SAYFA İLK AÇILDIĞINDA
+===================================================== */
+
 haberleriGetir();
+
 </script>
 
 </body>
